@@ -5,5 +5,5 @@ import com.example.mobillabor.view.details.CharacterDetailsScreen
 import javax.inject.Inject
 
 class CharacterDetailsPresenter @Inject constructor(
-    private val apiInteractor: BreakingBadApiInteractor
+    val apiInteractor: BreakingBadApiInteractor
 ) : BasePresenter<CharacterDetailsScreen>()

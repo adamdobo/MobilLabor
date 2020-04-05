@@ -10,7 +10,7 @@ import javax.inject.Inject
 class CharacterDetailsActivity : AppCompatActivity(), CharacterDetailsScreen {
 
     @Inject
-    private lateinit var presenter: CharacterDetailsPresenter
+    lateinit var presenter: CharacterDetailsPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
