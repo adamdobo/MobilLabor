@@ -1,20 +1,18 @@
 package com.example.mobillabor.view.list
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mobillabor.R
-import com.example.mobillabor.model.BreakingBadCharacter
+import com.example.mobillabor.database.model.BreakingBadCharacter
 import com.example.mobillabor.network.dto.CharacterListResponse
 import com.example.mobillabor.presenter.CharacterListPresenter
 import com.example.mobillabor.view.details.CharacterDetailsActivity
 import com.example.mobillabor.view.getAppComponent
 import kotlinx.android.synthetic.main.activity_character_list.*
-import kotlinx.coroutines.*
 import javax.inject.Inject
-import kotlin.coroutines.CoroutineContext
 
 class CharacterListActivity : AppCompatActivity(), CharacterListScreen, CharacterListAdapter.OnListItemClickedListener {
 

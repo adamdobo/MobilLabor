@@ -6,10 +6,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mobillabor.R
-import com.example.mobillabor.model.BreakingBadCharacter
+import com.example.mobillabor.database.model.BreakingBadCharacter
 import com.example.mobillabor.network.dto.CharacterListResponse
 import kotlinx.android.synthetic.main.character_list_item.view.*
-import okhttp3.internal.notify
 
 class CharacterListAdapter(
     private var characters: MutableList<BreakingBadCharacter>,
