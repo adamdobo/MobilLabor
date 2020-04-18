@@ -3,16 +3,22 @@ package com.example.mobillabor.view.list
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mobillabor.R
 import com.example.mobillabor.model.BreakingBadCharacter
+import com.example.mobillabor.network.dto.CharacterListResponse
 import com.example.mobillabor.presenter.CharacterListPresenter
 import com.example.mobillabor.view.details.CharacterDetailsActivity
 import com.example.mobillabor.view.getAppComponent
 import kotlinx.android.synthetic.main.activity_character_list.*
+import kotlinx.coroutines.*
 import javax.inject.Inject
+import kotlin.coroutines.CoroutineContext
 
 class CharacterListActivity : AppCompatActivity(), CharacterListScreen, CharacterListAdapter.OnListItemClickedListener {
+
+    private lateinit var characterListAdapter: CharacterListAdapter
 
     @Inject
     lateinit var presenter: CharacterListPresenter
@@ -22,13 +28,13 @@ class CharacterListActivity : AppCompatActivity(), CharacterListScreen, Characte
         setContentView(R.layout.activity_character_list)
 
         getAppComponent().inject(this)
-
         setupRecyclerView()
     }
 
     override fun onResume() {
         super.onResume()
         presenter.attach(this)
+        presenter.getCharacterList()
     }
 
     override fun onPause() {
@@ -37,21 +43,26 @@ class CharacterListActivity : AppCompatActivity(), CharacterListScreen, Characte
     }
 
     private fun setupRecyclerView() {
+        characterListAdapter = CharacterListAdapter(
+            characters = mutableListOf(),
+            listener = this
+        )
         character_list.apply {
             layoutManager = LinearLayoutManager(this@CharacterListActivity)
-            adapter = CharacterListAdapter(
-                characters = listOf(
-                    BreakingBadCharacter("TEST CHARACTER 1"),
-                    BreakingBadCharacter("TEST CHARACTER 2"),
-                    BreakingBadCharacter("TEST CHARACTER 3"),
-                    BreakingBadCharacter("TEST CHARACTER 4")
-                ),
-                listener = this@CharacterListActivity
-            )
+            adapter = characterListAdapter
         }
     }
 
     override fun onListItemClicked(character: BreakingBadCharacter) {
         startActivity(Intent(this, CharacterDetailsActivity::class.java))
+    }
+
+    override fun showList(characters: CharacterListResponse?) {
+        characterListAdapter.update(characters)
+    }
+
+    override fun showErrorPage(exception: Exception) {
+        Log.d("NETWORK ERROR", exception.message ?: "Unknown")
+        //TODO show error page
     }
 }

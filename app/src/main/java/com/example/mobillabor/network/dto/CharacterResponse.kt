@@ -35,4 +35,5 @@ data class CharacterResponse (
     val appearance: List<Int>,
     val portrayedBy: String
 
-)
+) {
+}

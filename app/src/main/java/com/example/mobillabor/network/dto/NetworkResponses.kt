@@ -1,6 +1,6 @@
 package com.example.mobillabor.network.dto
 
-import java.lang.Exception
+import kotlin.Exception
 
 sealed class NetworkResponse
 

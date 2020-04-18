@@ -1,6 +1,7 @@
 package com.example.mobillabor.interactor
 
 import com.example.mobillabor.network.BreakingBadApi
+import com.example.mobillabor.network.dto.CharacterListResponse
 import com.example.mobillabor.network.dto.Error
 import com.example.mobillabor.network.dto.NetworkResponse
 import com.example.mobillabor.network.dto.Success
@@ -13,7 +14,7 @@ class BreakingBadApiInteractor @Inject constructor(
     suspend fun getCharacters(): NetworkResponse {
         return try {
             val result = api.getCharacters()
-            Success(result)
+            Success(CharacterListResponse(result))
         } catch (e: Exception) {
             Error(e)
         }

@@ -14,12 +14,9 @@ package com.example.mobillabor.network.dto
 
 /**
  *
- * @param quoteId
- * @param quote
- * @param author
+ * @param characters
  */
-data class QuoteResponse(
-    val quoteId: Int,
-    val quote: String,
-    val author: String
+data class CharacterListResponse(
+
+    val characters: List<CharacterResponse>?
 )

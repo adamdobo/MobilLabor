@@ -7,10 +7,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mobillabor.R
 import com.example.mobillabor.model.BreakingBadCharacter
+import com.example.mobillabor.network.dto.CharacterListResponse
 import kotlinx.android.synthetic.main.character_list_item.view.*
+import okhttp3.internal.notify
 
 class CharacterListAdapter(
-    private val characters: List<BreakingBadCharacter>,
+    private var characters: MutableList<BreakingBadCharacter>,
     private val listener: OnListItemClickedListener
 ): RecyclerView.Adapter<CharacterListAdapter.ViewHolder>() {
     override fun onCreateViewHolder(
@@ -29,6 +31,12 @@ class CharacterListAdapter(
             holder.characterName.text = name
             holder.character = this
         }
+    }
+
+    fun update(list: CharacterListResponse?) {
+        characters.clear()
+        characters = list?.characters?.map { BreakingBadCharacter(it.name) }?.toMutableList() ?: mutableListOf()
+        notifyDataSetChanged()
     }
 
     inner class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
