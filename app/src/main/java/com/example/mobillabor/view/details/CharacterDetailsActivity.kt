@@ -3,6 +3,7 @@ package com.example.mobillabor.view.details
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mobillabor.R
+import com.example.mobillabor.network.dto.QuoteResponse
 import com.example.mobillabor.presenter.CharacterDetailsPresenter
 import com.example.mobillabor.view.getAppComponent
 import javax.inject.Inject
@@ -27,5 +28,13 @@ class CharacterDetailsActivity : AppCompatActivity(), CharacterDetailsScreen {
     override fun onPause() {
         super.onPause()
         presenter.detach()
+    }
+
+    override fun showQuote(quoteResponse: QuoteResponse?) {
+        //TODO show quote at UI
+    }
+
+    override fun showErrorPage(exception: Exception) {
+        //TODO show error page
     }
 }
