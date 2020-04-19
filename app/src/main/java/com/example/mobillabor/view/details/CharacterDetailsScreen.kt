@@ -1,7 +1,7 @@
 package com.example.mobillabor.view.details
 
-import com.example.mobillabor.database.model.BreakingBadCharacter
-import com.example.mobillabor.network.dto.QuoteResponse
+import com.example.mobillabor.dto.QuoteResponse
+import com.example.mobillabor.model.BreakingBadCharacter
 
 interface CharacterDetailsScreen {
     fun showQuote(quoteResponse: QuoteResponse?)

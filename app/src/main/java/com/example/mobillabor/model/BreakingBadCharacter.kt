@@ -1,10 +1,10 @@
-package com.example.mobillabor.database.model
+package com.example.mobillabor.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
-import com.example.mobillabor.database.converters.IntListConverter
-import com.example.mobillabor.database.converters.StringListConverter
+import com.example.mobillabor.converters.IntListConverter
+import com.example.mobillabor.converters.StringListConverter
 
 @Entity(tableName = "characters")
 data class BreakingBadCharacter(

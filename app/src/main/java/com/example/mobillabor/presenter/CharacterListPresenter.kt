@@ -1,12 +1,12 @@
 package com.example.mobillabor.presenter
 
+import com.example.mobillabor.dto.CharacterListResponse
+import com.example.mobillabor.dto.Error
+import com.example.mobillabor.dto.Success
 import com.example.mobillabor.interactor.BreakingBadApiInteractor
 import com.example.mobillabor.interactor.DatabaseInteractor
 import com.example.mobillabor.mapper.toBreakingBadCharacter
 import com.example.mobillabor.mapper.toBreakingBadCharacterListItem
-import com.example.mobillabor.network.dto.CharacterListResponse
-import com.example.mobillabor.network.dto.Error
-import com.example.mobillabor.network.dto.Success
 import com.example.mobillabor.view.list.CharacterListScreen
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope

@@ -1,7 +1,7 @@
 package com.example.mobillabor.mapper
 
-import com.example.mobillabor.database.model.BreakingBadCharacter
-import com.example.mobillabor.network.dto.CharacterResponse
+import com.example.mobillabor.dto.CharacterResponse
+import com.example.mobillabor.model.BreakingBadCharacter
 import com.example.mobillabor.view.model.BreakingBadCharacterDetails
 import com.example.mobillabor.view.model.BreakingBadCharacterListItem
 

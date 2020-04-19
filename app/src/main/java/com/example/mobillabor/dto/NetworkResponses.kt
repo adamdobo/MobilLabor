@@ -1,4 +1,4 @@
-package com.example.mobillabor.network.dto
+package com.example.mobillabor.dto
 
 sealed class NetworkResponse<out T: Any>
 

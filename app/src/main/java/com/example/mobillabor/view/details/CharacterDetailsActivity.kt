@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mobillabor.R
-import com.example.mobillabor.database.model.BreakingBadCharacter
-import com.example.mobillabor.network.dto.QuoteResponse
+import com.example.mobillabor.dto.QuoteResponse
+import com.example.mobillabor.model.BreakingBadCharacter
 import com.example.mobillabor.presenter.CharacterDetailsPresenter
 import com.example.mobillabor.view.getAppComponent
 import com.example.mobillabor.view.list.CharacterListActivity.Companion.CHAR_ID

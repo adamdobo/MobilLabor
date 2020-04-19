@@ -9,14 +9,17 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-package com.example.mobillabor.network.dto
+package com.example.mobillabor.dto
 
 
 /**
  *
- * @param characters
+ * @param quoteId
+ * @param quote
+ * @param author
  */
-data class CharacterListResponse(
-
-    val characters: List<CharacterResponse>?
+data class QuoteResponse(
+    val quoteId: Int,
+    val quote: String,
+    val author: String
 )

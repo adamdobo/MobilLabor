@@ -1,4 +1,4 @@
-package com.example.mobillabor.database.converters
+package com.example.mobillabor.converters
 
 import androidx.room.TypeConverter
 import com.google.gson.Gson
