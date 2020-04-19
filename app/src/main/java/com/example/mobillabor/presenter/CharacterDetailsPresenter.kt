@@ -7,8 +7,7 @@ import com.example.mobillabor.network.dto.QuoteResponse
 import com.example.mobillabor.network.dto.Success
 import com.example.mobillabor.view.details.CharacterDetailsScreen
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
 class CharacterDetailsPresenter @Inject constructor(
@@ -16,7 +15,7 @@ class CharacterDetailsPresenter @Inject constructor(
     private val dbInteractor: DatabaseInteractor
 ) : BasePresenter<CharacterDetailsScreen>() {
 
-    fun getQuoteByAuthor(author: String) = GlobalScope.launch(Dispatchers.Default) {
+    fun getQuoteByAuthor(author: String) = runBlocking(Dispatchers.Default) {
         when (val result = apiInteractor.getQuote(author)) {
             is Success<QuoteResponse> -> screen?.showQuote(result.response as? QuoteResponse)
             is Error -> screen?.showErrorPage(result.exception)

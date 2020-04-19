@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mobillabor.R
 import com.example.mobillabor.database.model.BreakingBadCharacter
-import com.example.mobillabor.network.dto.CharacterListResponse
 import com.example.mobillabor.presenter.CharacterListPresenter
 import com.example.mobillabor.view.details.CharacterDetailsActivity
 import com.example.mobillabor.view.getAppComponent
@@ -55,7 +54,7 @@ class CharacterListActivity : AppCompatActivity(), CharacterListScreen, Characte
         startActivity(Intent(this, CharacterDetailsActivity::class.java))
     }
 
-    override fun showList(characters: CharacterListResponse?) {
+    override fun showList(characters: List<BreakingBadCharacter>?) {
         characterListAdapter.update(characters)
     }
 
