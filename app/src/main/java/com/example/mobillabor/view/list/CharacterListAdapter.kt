@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mobillabor.R
 import com.example.mobillabor.database.model.BreakingBadCharacter
 import com.example.mobillabor.network.dto.CharacterListResponse
+import com.example.mobillabor.network.dto.mapper.toBreakingBadCharacter
 import kotlinx.android.synthetic.main.character_list_item.view.*
 
 class CharacterListAdapter(
@@ -34,7 +35,7 @@ class CharacterListAdapter(
 
     fun update(list: CharacterListResponse?) {
         characters.clear()
-        characters = list?.characters?.map { BreakingBadCharacter(it.name) }?.toMutableList() ?: mutableListOf()
+        characters = list?.characters?.map { it.toBreakingBadCharacter() }?.toMutableList() ?: mutableListOf()
         notifyDataSetChanged()
     }
 

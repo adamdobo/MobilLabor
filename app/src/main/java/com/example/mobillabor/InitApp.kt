@@ -1,6 +1,7 @@
 package com.example.mobillabor
 
 import android.app.Application
+import com.example.mobillabor.database.DatabaseModule
 
 class InitApp : Application() {
 
@@ -8,7 +9,8 @@ class InitApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        appComponent = DaggerApplicationComponent.create()
+        appComponent = DaggerApplicationComponent.builder()
+            .databaseModule(DatabaseModule(this)).build()
     }
 
 }

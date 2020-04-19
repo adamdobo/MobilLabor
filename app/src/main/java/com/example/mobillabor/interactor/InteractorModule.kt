@@ -1,17 +1,17 @@
 package com.example.mobillabor.interactor
 
+import com.example.mobillabor.database.dao.BreakingBadCharacterDao
 import com.example.mobillabor.network.BreakingBadApi
 import dagger.Module
 import dagger.Provides
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.newSingleThreadContext
 import javax.inject.Singleton
 
 @Module
-class ApiModule {
+class InteractorModule {
 
     @Provides
-    fun providesCoroutineScope(): CoroutineScope = CoroutineScope(newSingleThreadContext("networkIO"))
+    @Singleton
+    fun providesDatabaseInteractor(dao: BreakingBadCharacterDao) = DatabaseInteractor(dao)
 
     @Provides
     @Singleton

@@ -19,5 +19,5 @@ data class BreakingBadCharacter(
     val nickname: String,
     @TypeConverters(IntListConverter::class)
     val appearance: List<Int>,
-    val portrayedBy: String
+    val portrayedBy: String?
 )

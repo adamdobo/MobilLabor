@@ -1,9 +1,7 @@
 package com.example.mobillabor.network.dto
 
-import kotlin.Exception
+sealed class NetworkResponse<out T: Any>
 
-sealed class NetworkResponse
+class Success<out T: Any>(val response: T): NetworkResponse<T>()
 
-class Success<T>(val response: T): NetworkResponse()
-
-class Error(val exception: Exception): NetworkResponse()
+class Error(val exception: Exception): NetworkResponse<Nothing>()
