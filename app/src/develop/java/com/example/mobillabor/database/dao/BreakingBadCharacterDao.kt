@@ -3,7 +3,7 @@ package com.example.mobillabor.database.dao
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.example.mobillabor.database.model.BreakingBadCharacter
+import com.example.mobillabor.model.BreakingBadCharacter
 
 @Dao
 interface BreakingBadCharacterDao {

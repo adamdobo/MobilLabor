@@ -1,7 +1,7 @@
 package com.example.mobillabor.network
 
-import com.example.mobillabor.network.dto.CharacterResponse
-import com.example.mobillabor.network.dto.QuoteResponse
+import com.example.mobillabor.dto.CharacterResponse
+import com.example.mobillabor.dto.QuoteResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 

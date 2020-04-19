@@ -2,7 +2,7 @@ package com.example.mobillabor.interactor
 
 import android.util.Log
 import com.example.mobillabor.database.dao.BreakingBadCharacterDao
-import com.example.mobillabor.database.model.BreakingBadCharacter
+import com.example.mobillabor.model.BreakingBadCharacter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.withContext

@@ -18,7 +18,7 @@ class CharacterDetailsPresenter @Inject constructor(
 
     fun getQuoteByAuthor(author: String) = GlobalScope.launch(Dispatchers.Main) {
         when (val result = apiInteractor.getQuote(author)) {
-            is Success<QuoteResponse> -> screen?.showQuote(result.response)
+            is Success<*> -> screen?.showQuote(result.response as QuoteResponse)
             is Error -> screen?.showQuoteErrorPage(result.exception)
         }
     }

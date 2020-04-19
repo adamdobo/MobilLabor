@@ -1,9 +1,8 @@
 package com.example.mobillabor.interactor
 
+import com.example.mobillabor.dto.CharacterListResponse
+import com.example.mobillabor.dto.Success
 import com.example.mobillabor.network.BreakingBadApi
-import com.example.mobillabor.network.dto.CharacterListResponse
-import com.example.mobillabor.network.dto.Error
-import com.example.mobillabor.network.dto.Success
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.withContext

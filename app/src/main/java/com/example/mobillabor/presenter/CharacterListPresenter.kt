@@ -22,9 +22,9 @@ class CharacterListPresenter @Inject constructor(
         val dbResult = dbInteractor.getAllCharacters()
         if(dbResult.isEmpty()) {
             when (val result = apiInteractor.getCharacters()) {
-                is Success<CharacterListResponse> -> {
-                    screen?.showList(result.response.characters?.map { it.toBreakingBadCharacterListItem() })
-                    saveCharactersToDatabase(result.response)
+                is Success<*> -> {
+                    screen?.showList((result.response as CharacterListResponse).characters?.map { it.toBreakingBadCharacterListItem() })
+                    saveCharactersToDatabase((result.response as CharacterListResponse))
                 }
                 is Error -> screen?.showErrorPage(result.exception)
             }
