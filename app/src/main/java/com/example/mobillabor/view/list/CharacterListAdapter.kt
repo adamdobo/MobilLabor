@@ -6,11 +6,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mobillabor.R
-import com.example.mobillabor.database.model.BreakingBadCharacter
+import com.example.mobillabor.view.model.BreakingBadCharacterListItem
 import kotlinx.android.synthetic.main.character_list_item.view.*
 
 class CharacterListAdapter(
-    private var characters: MutableList<BreakingBadCharacter>,
+    private var characters: MutableList<BreakingBadCharacterListItem>,
     private val listener: OnListItemClickedListener
 ): RecyclerView.Adapter<CharacterListAdapter.ViewHolder>() {
     override fun onCreateViewHolder(
@@ -31,7 +31,7 @@ class CharacterListAdapter(
         }
     }
 
-    fun update(list: List<BreakingBadCharacter>?) {
+    fun update(list: List<BreakingBadCharacterListItem>?) {
         characters.clear()
         characters = list?.toMutableList() ?: mutableListOf()
         notifyDataSetChanged()
@@ -40,7 +40,7 @@ class CharacterListAdapter(
     inner class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
         val characterName: TextView = view.character_name
-        lateinit var character: BreakingBadCharacter
+        lateinit var character: BreakingBadCharacterListItem
 
         init {
             view.setOnClickListener {
@@ -50,6 +50,6 @@ class CharacterListAdapter(
     }
 
     interface OnListItemClickedListener {
-        fun onListItemClicked(character: BreakingBadCharacter)
+        fun onListItemClicked(character: BreakingBadCharacterListItem)
     }
 }

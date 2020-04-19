@@ -7,7 +7,8 @@ import com.example.mobillabor.network.dto.QuoteResponse
 import com.example.mobillabor.network.dto.Success
 import com.example.mobillabor.view.details.CharacterDetailsScreen
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class CharacterDetailsPresenter @Inject constructor(
@@ -15,15 +16,17 @@ class CharacterDetailsPresenter @Inject constructor(
     private val dbInteractor: DatabaseInteractor
 ) : BasePresenter<CharacterDetailsScreen>() {
 
-    fun getQuoteByAuthor(author: String) = runBlocking(Dispatchers.Default) {
+    fun getQuoteByAuthor(author: String) = GlobalScope.launch(Dispatchers.Main) {
         when (val result = apiInteractor.getQuote(author)) {
-            is Success<QuoteResponse> -> screen?.showQuote(result.response as? QuoteResponse)
-            is Error -> screen?.showErrorPage(result.exception)
+            is Success<QuoteResponse> -> screen?.showQuote(result.response)
+            is Error -> screen?.showQuoteErrorPage(result.exception)
         }
     }
 
-    fun getCharacterDetails(id: Int) {
-        //TODO get character from DB
+    fun getCharacterDetails(id: Int) = GlobalScope.launch(Dispatchers.Main) {
+        when(val details = dbInteractor.getCharacterDetails(id)) {
+            null -> screen?.showErrorPage()
+            else -> screen?.showCharacterDetails(details)
+        }
     }
-
 }

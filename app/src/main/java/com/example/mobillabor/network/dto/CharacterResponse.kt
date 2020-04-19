@@ -11,6 +11,8 @@
  */
 package com.example.mobillabor.network.dto
 
+import com.google.gson.annotations.SerializedName
+
 
 /**
  * 
@@ -25,6 +27,7 @@ package com.example.mobillabor.network.dto
  * @param portrayedBy 
  */
 data class CharacterResponse (
+    @SerializedName(value = "char_id")
     val charId: Int,
     val name: String,
     val birthday: String,

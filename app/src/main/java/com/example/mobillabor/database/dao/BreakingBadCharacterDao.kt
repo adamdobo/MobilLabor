@@ -1,6 +1,7 @@
 package com.example.mobillabor.database.dao
 
 import androidx.room.Dao
+import androidx.room.Insert
 import androidx.room.Query
 import com.example.mobillabor.database.model.BreakingBadCharacter
 
@@ -12,4 +13,7 @@ interface BreakingBadCharacterDao {
 
     @Query("SELECT * FROM characters WHERE charId = :charId")
     fun getCharacterById(charId: Int): BreakingBadCharacter
+
+    @Insert
+    fun insertAll(vararg characters: BreakingBadCharacter)
 }
