@@ -4,9 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mobillabor.R
 import com.example.mobillabor.presenter.CharacterListPresenter
+import com.example.mobillabor.view.SwipeToDeleteCallback
 import com.example.mobillabor.view.details.CharacterDetailsActivity
 import com.example.mobillabor.view.getAppComponent
 import com.example.mobillabor.view.model.BreakingBadCharacterListItem
@@ -48,12 +50,16 @@ class CharacterListActivity : AppCompatActivity(), CharacterListScreen, Characte
     private fun setupRecyclerView() {
         characterListAdapter = CharacterListAdapter(
             characters = mutableListOf(),
-            listener = this
+            listener = this,
+            context = this
         )
-        character_list.apply {
+
+        val touchHelper = ItemTouchHelper(SwipeToDeleteCallback(characterListAdapter))
+        val recyclerView = character_list.apply {
             layoutManager = LinearLayoutManager(this@CharacterListActivity)
             adapter = characterListAdapter
         }
+        touchHelper.attachToRecyclerView(recyclerView)
     }
 
     override fun onListItemClicked(character: BreakingBadCharacterListItem) {
