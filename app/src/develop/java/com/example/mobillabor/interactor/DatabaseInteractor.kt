@@ -40,4 +40,16 @@ class DatabaseInteractor @Inject constructor(
             }
         }
     }
+
+    suspend fun removeCharacter(characterId: Int) = coroutineScope {
+        return@coroutineScope withContext(Dispatchers.IO) {
+            try {
+                Log.d("CHARACTER DAO", "Removing character...")
+                dao.removeCharacter(characterId)
+            } catch (e: Exception) {
+                null
+            }
+        }
+    }
+
 }

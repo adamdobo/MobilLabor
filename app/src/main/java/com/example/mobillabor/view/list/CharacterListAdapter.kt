@@ -43,7 +43,8 @@ class CharacterListAdapter(
     }
 
     fun deleteItem(position: Int) {
-        characters.removeAt(position)
+        val removedCharacter = characters.removeAt(position)
+        listener.onListItemRemoved(removedCharacter)
         notifyItemRemoved(position)
     }
 
@@ -62,5 +63,6 @@ class CharacterListAdapter(
 
     interface OnListItemClickedListener {
         fun onListItemClicked(character: BreakingBadCharacterListItem)
+        fun onListItemRemoved(character: BreakingBadCharacterListItem)
     }
 }

@@ -1,6 +1,7 @@
 package com.example.mobillabor.interactor
 
 import com.example.mobillabor.dto.CharacterListResponse
+import com.example.mobillabor.dto.Error
 import com.example.mobillabor.dto.Success
 import com.example.mobillabor.network.BreakingBadApi
 import kotlinx.coroutines.Dispatchers
@@ -28,7 +29,11 @@ class BreakingBadApiInteractor @Inject constructor(
         return@coroutineScope withContext(Dispatchers.IO) {
             try {
                 val result = api.getRandomQuoteByCharacter(author)
-                Success(result)
+                if(result.isNotEmpty()) {
+                    Success(result[0])
+                } else {
+                    Error(Exception("No quote returned"))
+                }
             } catch (e: Exception) {
                 Error(e)
             }

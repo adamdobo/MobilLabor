@@ -20,7 +20,7 @@ class CharacterListPresenter @Inject constructor(
 
     fun getCharacterList() = GlobalScope.launch(Dispatchers.Main) {
         val dbResult = dbInteractor.getAllCharacters()
-        if(dbResult.isEmpty()) {
+        if (dbResult.isEmpty()) {
             when (val result = apiInteractor.getCharacters()) {
                 is Success<*> -> {
                     screen?.showList((result.response as CharacterListResponse).characters?.map { it.toBreakingBadCharacterListItem() })
@@ -38,5 +38,10 @@ class CharacterListPresenter @Inject constructor(
             dbInteractor.saveCharacters(it)
         }
     }
+
+    fun removeCharacter(characterId: Int) = GlobalScope.launch(Dispatchers.Main) {
+        dbInteractor.removeCharacter(characterId)
+    }
+
 
 }

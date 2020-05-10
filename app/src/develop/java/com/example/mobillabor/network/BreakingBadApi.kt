@@ -10,9 +10,9 @@ interface BreakingBadApi {
     @GET("characters")
     suspend fun getCharacters(): List<CharacterResponse>
 
-    @GET("quotes/random")
+    @GET("quote/random")
     suspend fun getRandomQuoteByCharacter(
         @Query("author") author: String
-    ): QuoteResponse
+    ): List<QuoteResponse>
 
 }

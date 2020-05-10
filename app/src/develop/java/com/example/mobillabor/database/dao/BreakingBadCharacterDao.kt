@@ -16,4 +16,7 @@ interface BreakingBadCharacterDao {
 
     @Insert
     fun insertAll(vararg characters: BreakingBadCharacter)
+
+    @Query("DELETE FROM characters WHERE charId = :charId")
+    fun removeCharacter(charId: Int)
 }

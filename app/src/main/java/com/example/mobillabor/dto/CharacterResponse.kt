@@ -24,7 +24,7 @@ import com.google.gson.annotations.SerializedName
  * @param status 
  * @param nickname 
  * @param appearance 
- * @param portrayedBy 
+ * @param portrayed
  */
 data class CharacterResponse (
     @SerializedName(value = "char_id")
@@ -36,7 +36,7 @@ data class CharacterResponse (
     val status: String,
     val nickname: String,
     val appearance: List<Int>,
-    val portrayedBy: String
+    val portrayed: String
 
 ) {
 }

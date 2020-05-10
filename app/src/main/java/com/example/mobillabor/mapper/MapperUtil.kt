@@ -20,7 +20,7 @@ fun CharacterResponse.toBreakingBadCharacter() = BreakingBadCharacter(
     status = status,
     nickname = nickname,
     appearance = appearance,
-    portrayedBy = portrayedBy
+    portrayedBy = portrayed
 )
 
 fun BreakingBadCharacter.toBreakingBadCharacterListItem() = BreakingBadCharacterListItem(

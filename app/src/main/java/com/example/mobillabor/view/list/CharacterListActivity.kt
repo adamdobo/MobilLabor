@@ -2,7 +2,6 @@ package com.example.mobillabor.view.list
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,6 +11,7 @@ import com.example.mobillabor.view.SwipeToDeleteCallback
 import com.example.mobillabor.view.details.CharacterDetailsActivity
 import com.example.mobillabor.view.getAppComponent
 import com.example.mobillabor.view.model.BreakingBadCharacterListItem
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_character_list.*
 import javax.inject.Inject
 
@@ -70,12 +70,15 @@ class CharacterListActivity : AppCompatActivity(), CharacterListScreen, Characte
         startActivity(intent)
     }
 
+    override fun onListItemRemoved(character: BreakingBadCharacterListItem) {
+        presenter.removeCharacter(character.charId)
+    }
+
     override fun showList(characters: List<BreakingBadCharacterListItem>?) {
         characterListAdapter.update(characters)
     }
 
     override fun showErrorPage(exception: Exception) {
-        Log.d("NETWORK ERROR", exception.message ?: "Unknown")
-        //TODO show error page
+        Snackbar.make(listParentLayout, R.string.errorText, Snackbar.LENGTH_LONG).show()
     }
 }
