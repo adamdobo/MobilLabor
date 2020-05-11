@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "34983159290",
+    "firebase_url": "https://mobillabor-ac20b.firebaseio.com",
+    "project_id": "mobillabor-ac20b",
+    "storage_bucket": "mobillabor-ac20b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:34983159290:android:033b323d17600ee40af043",
+        "android_client_info": {
+          "package_name": "com.example.mobillabor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "34983159290-sinh52fun9f8e92qdd8pq31ogt4ng3mr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDo-fhcSpjP0hKZkLLmrx1tXgG1hp4Li9A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "34983159290-sinh52fun9f8e92qdd8pq31ogt4ng3mr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
