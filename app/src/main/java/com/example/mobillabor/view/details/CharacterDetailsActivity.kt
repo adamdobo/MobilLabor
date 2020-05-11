@@ -11,15 +11,18 @@ import com.example.mobillabor.view.getAppComponent
 import com.example.mobillabor.view.list.CharacterListActivity.Companion.CHAR_ID
 import com.example.mobillabor.view.list.CharacterListActivity.Companion.CHAR_NAME
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_character_details.*
 import javax.inject.Inject
+
 
 class CharacterDetailsActivity : AppCompatActivity(), CharacterDetailsScreen {
 
     @Inject
     lateinit var presenter: CharacterDetailsPresenter
     private var characterId: Int = 0
+    private lateinit var firebase: FirebaseAnalytics
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +33,7 @@ class CharacterDetailsActivity : AppCompatActivity(), CharacterDetailsScreen {
         characterId = intent.getIntExtra(CHAR_ID, 0)
 
         title = name
+        firebase = FirebaseAnalytics.getInstance(this)
 
         quote_button.setOnClickListener {
             presenter.getQuoteByAuthor(title.toString())
@@ -40,6 +44,9 @@ class CharacterDetailsActivity : AppCompatActivity(), CharacterDetailsScreen {
         super.onResume()
         presenter.attach(this)
         presenter.getCharacterDetails(characterId)
+        val params = Bundle()
+        params.putString("character_name", title.toString())
+        firebase.logEvent("view_character_details", params)
     }
 
     override fun onPause() {
