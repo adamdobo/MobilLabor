@@ -12,6 +12,7 @@ import com.example.mobillabor.view.details.CharacterDetailsActivity
 import com.example.mobillabor.view.getAppComponent
 import com.example.mobillabor.view.model.BreakingBadCharacterListItem
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.analytics.FirebaseAnalytics
 import kotlinx.android.synthetic.main.activity_character_list.*
 import javax.inject.Inject
 
@@ -27,10 +28,13 @@ class CharacterListActivity : AppCompatActivity(), CharacterListScreen, Characte
     @Inject
     lateinit var presenter: CharacterListPresenter
 
+    private lateinit var firebase: FirebaseAnalytics
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_character_list)
         title = TITLE
+        firebase = FirebaseAnalytics.getInstance(this)
 
         getAppComponent().inject(this)
         setupRecyclerView()
@@ -40,6 +44,7 @@ class CharacterListActivity : AppCompatActivity(), CharacterListScreen, Characte
         super.onResume()
         presenter.attach(this)
         presenter.getCharacterList()
+        firebase.logEvent("view_character_list", null)
     }
 
     override fun onPause() {
