@@ -79,6 +79,6 @@ class CharacterListActivity : AppCompatActivity(), CharacterListScreen, Characte
     }
 
     override fun showErrorPage(exception: Exception) {
-        Snackbar.make(listParentLayout, R.string.errorText, Snackbar.LENGTH_LONG).show()
+        Snackbar.make(listParentLayout, exception.message ?: getString(R.string.errorText), Snackbar.LENGTH_LONG).show()
     }
 }
