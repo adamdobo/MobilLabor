@@ -15,6 +15,10 @@ class DatabaseInteractor @Inject constructor() {
         //MOCK METHOD
     }
 
+    fun removeCharacter(characterId: Int) {
+        //MOCK METHOD
+    }
+
     fun getCharacterDetails(id: Int): BreakingBadCharacter? {
         return MOCK_CHARACTER_LIST_RESPONSE.firstOrNull { it.charId == id }?.toBreakingBadCharacter()
     }
